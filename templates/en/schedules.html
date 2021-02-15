@@ -1,0 +1,103 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <table class="tb-with-list">
+            <caption id="tb-cap">Schedules list</caption>
+            <tr>
+                <th class="tb-td">ID</th>
+                <th class="tb-td">Time start</th>
+                <th class="tb-td">Time end</th>
+                <th class="tb-td">Monday</th>
+                <th class="tb-td">Tuesday</th>
+                <th class="tb-td">Wednesday</th>
+                <th class="tb-td">Thursday</th>
+                <th class="tb-td">Friday</th>
+                <th class="tb-td">Saturday</th>
+                <th class="tb-td">Sunday</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for schedule in schedules %}
+            <tr>
+                <td class="tb-td">{{schedule.id}}</td>
+                <td class="tb-td">{{schedule.time_start}}</td>
+                <td class="tb-td">{{schedule.time_end}}</td>
+                <td class="tb-td">{% if schedule.monday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">
+                    {% if schedule.tuesday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">
+                    {% if schedule.wednesday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">
+                    {% if schedule.thursday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">
+                    {% if schedule.friday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">
+                    {% if schedule.saturday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td">{% if schedule.sunday %}
+                        +
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+                <td class="tb-td edit-bck"><a class="hover-btn" href="edit/{{schedule.id}}/">Edit</a></td>
+                <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{schedule.id}}/">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h3>Add new schedule</h3>
+        <form action="add/" method="post">
+            {% csrf_token %}
+            <label for="time_start">Start time:</label><br>
+            <div class="input-div">
+                <input type="time" name="time_start" id="id_time_start" required value="09:00">
+            </div>
+            <label for="time_end">End time:</label><br>
+            <div class="input-div">
+                <input type="time" name="time_end" id="id_time_end" required value="23:00">
+            </div>
+            <label>Days of week:</label><br>
+            <div class="input-div">
+                <input class="radio-btn" type="checkbox" name="sch_mon" id="id_sch_mon" checked>Monday<br>
+                <input class="radio-btn" type="checkbox" name="sch_tue" id="id_sch_tue" checked>Tuesday<br>
+                <input class="radio-btn" type="checkbox" name="sch_wed" id="id_sch_wed" checked>Wednesday<br>
+                <input class="radio-btn" type="checkbox" name="sch_thu" id="id_sch_thu" checked>Thursday<br>
+                <input class="radio-btn" type="checkbox" name="sch_fri" id="id_sch_fri" checked>Friday<br>
+                <input class="radio-btn" type="checkbox" name="sch_sat" id="id_sch_sat">Saturday<br>
+                <input class="radio-btn" type="checkbox" name="sch_sun" id="id_sch_sun">Sunday<br>
+            </div>
+            <input class="sbmt-btn" type="submit" value="Add">
+        </form>
+    </div>
+</div>
+{% endblock content %}

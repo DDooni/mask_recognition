@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+{% load googlecharts %}
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+    {% block header %}
+    <header>
+        <a class="nav" href="/">Домашня</a>
+        <a class="nav" href="contacts_redirect/">Контакти</a>
+        <a class="nav" href="backups_redirect/">Резервні копії</a>
+        <a class="nav" href="signout/">Вийти</a>
+        <div>
+            <a class="nav cur-lang" href="ukr/">UA</a> | 
+            <a class="nav" href="eng/">EN</a>
+        </div>
+    </header>
+    {% endblock header %}
+    <div class="wrapper">
+        {% block content %}
+            {% googlecharts %}
+            {% endgooglecharts %}
+        {% endblock content %}
+    </div>
+    <div class="errors">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+        </span>
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <footer>
+        <div id="reserved">
+            Усі права захищені!
+        </div>
+    </footer>
+</body>
+</html>

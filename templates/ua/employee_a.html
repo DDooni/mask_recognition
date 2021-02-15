@@ -1,0 +1,37 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>Організація: {{organization.name}}</h1>
+        <h3>Інформація про робітника:</h3>
+        <div><b>Ім'я: </b>{{employee.name}}</div>
+        <div><b>Прізвище: </b>{{employee.surname}}</div>
+        <div><b>По батькові: </b>{{employee.father}}</div>
+        <div><b>Дата народження: </b>{{employee.birth}}</div>
+        <div><b>Номер телефону: </b>{{employee.phone}}</div>
+        <div><b>Розклад: </b>{{schedule.time_start}} - {{schedule.time_end}} (
+            {% if schedule.monday %}
+                Пн
+            {% endif %}
+            {% if schedule.tuesday %}
+                Вт
+            {% endif %}
+            {% if schedule.wednesday %}
+                Ср
+            {% endif %}
+            {% if schedule.thursday %}
+                Чт
+            {% endif %}
+            {% if schedule.friday %}
+                Пт
+            {% endif %}
+            {% if schedule.saturday %}
+                Сб
+            {% endif %}
+            {% if schedule.sunday %}
+                Нд
+            {% endif %}
+            )</div>
+    </div>
+</div> 
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <table class="tb-with-list">
+            <caption  id="tb-cap">Резервні копії</caption>
+            <tr>
+                <th class="tb-td">Назва копії</th>
+                <th class="tb-td">Час та дата створення</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for backup in backups %}
+            <tr>
+                <td class="tb-td">{{backup.name}}</td>
+                <td class="tb-td">{{backup.time}}</td>
+                <td class="tb-td edit-bck"><a class="hover-btn" href="import/{{backup.name}}/">Імпортувати</a></td>
+                <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{backup.name}}/">Видалити</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button class="del-cam exp" onclick="window.location='export/'">Експортувати</button>
+    </div>
+</div>
+{% endblock content %}

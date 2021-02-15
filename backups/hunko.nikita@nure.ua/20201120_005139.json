@@ -1,0 +1,91 @@
+{
+    "areas": [
+        {
+            "id": 8,
+            "name": "Hall",
+            "org_id": 11
+        },
+        {
+            "id": 9,
+            "name": "Offices (2st floor)",
+            "org_id": 11
+        }
+    ],
+    "cameras": [
+        {
+            "area_id": 8,
+            "id": 8,
+            "name": "Main"
+        },
+        {
+            "area_id": 8,
+            "id": 9,
+            "name": "Unusuall"
+        }
+    ],
+    "employees": [
+        {
+            "birth": "2001-04-19",
+            "email": "layla.bob@nure.ua",
+            "father": "Vasilyovich",
+            "id": 7,
+            "name": "Bob",
+            "org_id": 11,
+            "phone": "+380 95 456 12 45",
+            "sched_id": 8,
+            "surname": "Lyala"
+        }
+    ],
+    "manager": {
+        "birth": "2001-07-24",
+        "email": "hunko.nikita@nure.ua",
+        "father": "Andreevich",
+        "id": 20,
+        "name": "Nikita",
+        "phone": "+380 96 124 21 44",
+        "surname": "Hunko"
+    },
+    "organization": {
+        "adress": "Electrovoznaya st. 21",
+        "id": 11,
+        "mgr_id": 20,
+        "name": "Image Phone"
+    },
+    "schedules": [
+        {
+            "friday": true,
+            "id": 8,
+            "monday": true,
+            "org_id": 11,
+            "saturday": false,
+            "sunday": false,
+            "thursday": true,
+            "time_end": "23:00",
+            "time_start": "09:00",
+            "tuesday": true,
+            "wednesday": true
+        },
+        {
+            "friday": false,
+            "id": 9,
+            "monday": false,
+            "org_id": 11,
+            "saturday": true,
+            "sunday": true,
+            "thursday": false,
+            "time_end": "23:00",
+            "time_start": "09:00",
+            "tuesday": false,
+            "wednesday": false
+        }
+    ],
+    "warnings": [
+        {
+            "cam_id": 8,
+            "datetime": "2020-11-20 00:36",
+            "id": 12,
+            "image": "20201120_0035.jpg",
+            "status": "Open"
+        }
+    ]
+}

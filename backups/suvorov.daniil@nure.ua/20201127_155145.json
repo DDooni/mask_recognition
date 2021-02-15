@@ -1,0 +1,123 @@
+{
+    "areas": [
+        {
+            "id": 1,
+            "name": "Offices (1st floor)",
+            "org_id": 1
+        },
+        {
+            "id": 2,
+            "name": "Kitchen",
+            "org_id": 1
+        },
+        {
+            "id": 7,
+            "name": "Hall",
+            "org_id": 1
+        }
+    ],
+    "cameras": [
+        {
+            "area_id": 1,
+            "id": 1,
+            "name": "Main"
+        },
+        {
+            "area_id": 7,
+            "id": 6,
+            "name": "Unusuall"
+        }
+    ],
+    "employees": [
+        {
+            "birth": "2000-12-18",
+            "email": "sidorenko.alex@nure.ua",
+            "father": "Viacheslavovich",
+            "id": 1,
+            "name": "Alex",
+            "org_id": 1,
+            "phone": "+380 93 234 54 45",
+            "sched_id": 1,
+            "surname": "Sidorenko"
+        },
+        {
+            "birth": "2001-02-24",
+            "email": "nechiporenko.artem@nure.ua",
+            "father": "Vladimirovich",
+            "id": 2,
+            "name": "Artem",
+            "org_id": 1,
+            "phone": "+380 97 457 48 48",
+            "sched_id": 2,
+            "surname": "Nechiporenko"
+        },
+        {
+            "birth": "2001-04-19",
+            "email": "poleschuk.ilya@nure.ua",
+            "father": "Yuriyovich",
+            "id": 4,
+            "name": "Ilya",
+            "org_id": 1,
+            "phone": "+380 95 456 12 40",
+            "sched_id": 2,
+            "surname": "Poleschuk"
+        }
+    ],
+    "manager": {
+        "birth": "2000-12-18",
+        "email": "suvorov.daniil@nure.ua",
+        "father": "Spartakovich",
+        "id": 1,
+        "name": "Daniil",
+        "phone": "+380 50 818 15 55",
+        "surname": "Suvorov"
+    },
+    "organization": {
+        "adress": "Nauki ave. 14",
+        "id": 1,
+        "mgr_id": 1,
+        "name": "Mask Control Inc."
+    },
+    "schedules": [
+        {
+            "friday": true,
+            "id": 1,
+            "monday": true,
+            "org_id": 1,
+            "saturday": false,
+            "sunday": false,
+            "thursday": true,
+            "time_end": "15:00",
+            "time_start": "09:00",
+            "tuesday": true,
+            "wednesday": true
+        },
+        {
+            "friday": true,
+            "id": 2,
+            "monday": true,
+            "org_id": 1,
+            "saturday": false,
+            "sunday": false,
+            "thursday": true,
+            "time_end": "23:00",
+            "time_start": "15:00",
+            "tuesday": true,
+            "wednesday": true
+        },
+        {
+            "friday": true,
+            "id": 5,
+            "monday": true,
+            "org_id": 1,
+            "saturday": true,
+            "sunday": true,
+            "thursday": true,
+            "time_end": "15:15",
+            "time_start": "09:00",
+            "tuesday": true,
+            "wednesday": true
+        }
+    ],
+    "warnings": []
+}

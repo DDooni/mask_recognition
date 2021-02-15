@@ -1,0 +1,25 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <table class="tb-with-list">
+            <caption  id="tb-cap">Backups</caption>
+            <tr>
+                <th class="tb-td">Backup name</th>
+                <th class="tb-td">Backup datetime</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for backup in backups %}
+            <tr>
+                <td class="tb-td">{{backup.name}}</td>
+                <td class="tb-td">{{backup.time}}</td>
+                <td class="tb-td edit-bck"><a class="hover-btn" href="import/{{backup.name}}/">Import</a></td>
+                <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{backup.name}}/">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button class="del-cam exp" onclick="window.location='export/'">Export</button>
+    </div>
+</div>
+{% endblock content %}

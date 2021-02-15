@@ -1,0 +1,77 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h3>Edit an employee</h3>
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <label for="emp_name">Employee name:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_name" id="id_emp_name" required value="{{emp.name}}"  placeholder="Ivan">
+            </div>
+            <label for="emp_surname">Employee surname:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_surname" id="id_emp_surname" required value="{{emp.surname}}" placeholder="Ivanov">
+            </div>
+            <label for="emp_father">Employee father:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_father" id="id_emp_father" required value="{{emp.father}}" placeholder="Ivanovich">
+            </div>
+            <label for="emp_birth">Birthday:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_birth" id="id_emp_birth" required value="{{emp.birth}}" placeholder="1980-12-12">
+            </div>
+            <label for="emp_phone">Phone number:</label><br>
+            <div class="input-div">
+                <input type="tel" name="emp_phone" id="id_emp_phone" required value="{{emp.phone}}" placeholder="+380 12 345 67 89">
+            </div>
+
+            <label>Schedule:</label><br>
+            <div class="input-div">
+                {% for sched in schedules %}  
+                    <input class="radio-btn" type="radio" name="emp_sched" id="id_emp_sched" value={{sched.id}}
+                        {% if sched.id == emp.sched_id %}
+                            checked
+                        {% endif %}>                  
+                    <label for="emp_sched">{{sched.time_start}} - {{sched.time_end}} (
+                            {% if sched.monday %}
+                                Mon
+                            {% endif %}
+                            {% if sched.tuesday %}
+                                Tue
+                            {% endif %}
+                            {% if sched.wednesday %}
+                                Wed
+                            {% endif %}
+                            {% if sched.thursday %}
+                                Thu
+                            {% endif %}
+                            {% if sched.friday %}
+                                Fri
+                            {% endif %}
+                            {% if sched.saturday %}
+                                Sat
+                            {% endif %}
+                            {% if sched.sunday %}
+                                Sun
+                            {% endif %}
+                            )</label><br>                       
+                    {% endfor %}
+            </div>
+            <label for="emp_email">Email:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_email" id="id_emp_email" required value="{{emp.email}}" placeholder="email@mail.com">
+            </div>
+            <label for="emp_password">Password:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_password" id="id_emp_password" required placeholder="123456">
+            </div>
+            <label for="emp_password_again">Password (again):</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_password_again" id="id_emp_password_again" required placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Update">
+        </form>
+    </div>
+</div>
+{% endblock content %}

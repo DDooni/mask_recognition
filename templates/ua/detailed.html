@@ -1,0 +1,100 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>{{manager.name}} {{manager.surname}} {{manager.father}}</h1>
+        <h3>{{organization.name}}</h3>
+        <table>
+            <tr>
+                <td class="tb-title">
+                    Адреса:
+                </td>
+                <td class="tb-cnt">
+                    {{organization.adress}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Дата народження:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.birth}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Електрона пошта:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.email}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Номер телефону:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.phone}}
+                </td>
+            </tr>
+        </table>
+        <table class="tb-with-list">
+            <tr>
+                <th class="tb-td">Зони</th>
+                <th class="tb-td">Камери</th>
+                <th class="tb-td">Розклади</th>
+                <th class="tb-td">Робітники</th>
+            </tr>
+                <tr>
+                    <td class="tb-td">
+                        {% for area in areas %}                
+                            {{area.name}}<br>
+                        {% endfor %}
+                    </td>
+                            
+                    <td class="tb-td">
+                        {% for camera in cameras %}
+                            {{camera.name}}<br>
+                        {% endfor %}
+                    </td>
+                    
+                    <td class="tb-td">
+                        {% for schedule in schedules %}
+
+                            {{schedule.time_start}} - {{schedule.time_end}} (
+                            {% if schedule.monday %}
+                                Пн
+                            {% endif %}
+                            {% if schedule.tuesday %}
+                                Вт
+                            {% endif %}
+                            {% if schedule.wednesday %}
+                                Ср
+                            {% endif %}
+                            {% if schedule.thursday %}
+                                Чт
+                            {% endif %}
+                            {% if schedule.friday %}
+                                Пт
+                            {% endif %}
+                            {% if schedule.saturday %}
+                                Сб
+                            {% endif %}
+                            {% if schedule.sunday %}
+                                Нд
+                            {% endif %}
+                            )<br>
+                            
+                        {% endfor %}
+                    </td>
+
+                    <td class="tb-td">
+                        {% for employee in employees %}
+                            <a class="cam" href="{{organization.id}}/employees/{{employee.id}}/">{{employee.name}} {{employee.surname}}</a><br>
+                        {% endfor %}
+                    </td>
+                </tr>
+        </table>
+    </div>
+</div>
+{% endblock content %}

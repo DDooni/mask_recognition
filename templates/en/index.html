@@ -1,0 +1,20 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="signin-form">
+    <div class="form-back">
+        <form action="signin/" method="post" novalidate>
+            {% csrf_token %}
+            <label for="email">Email:</label><br>
+            <div class="input-div">
+                <input type="email" name="email" id="id_email" placeholder="email@mail.com">
+            </div>
+            <label for="password">Password:</label><br>
+            <div class="input-div">
+                <input type="password" name="password" id="id_password" placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Sign In">
+            <a id="reg-a" href="register/">Register</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

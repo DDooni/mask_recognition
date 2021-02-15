@@ -1,0 +1,137 @@
+{% extends "ua/base.html" %}
+{% block content %}
+    <div id="content">
+        <div id="page-inner-cnt">
+            <table class="tb-with-list">
+                <caption id="tb-cap">Список робітників</caption>
+                <tr>
+                    <th class="tb-td">Ім'я</th>
+                    <th class="tb-td">Прізвище</th>
+                    <th class="tb-td">По батькові</th>
+                    <th class="tb-td">Дата народження</th>
+                    <th class="tb-td">Номер телефону</th>
+                    <th class="tb-td">Електрона пошта</th>
+                    <th class="tb-td">Розклад</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for employee in employees %}
+                <tr>
+                    <td class="tb-td">
+                        {{employee.name}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.surname}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.father}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.birth}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.phone}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.email}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.sched_dict.time_start}} - {{employee.sched_dict.time_end}} (
+                        {% if employee.sched_dict.monday %}
+                            Пн
+                        {% endif %}
+                        {% if employee.sched_dict.tuesday %}
+                            Вт
+                        {% endif %}
+                        {% if employee.sched_dict.wednesday %}
+                            Ср
+                        {% endif %}
+                        {% if employee.sched_dict.thursday %}
+                            Чт
+                        {% endif %}
+                        {% if employee.sched_dict.friday %}
+                            Пт
+                        {% endif %}
+                        {% if employee.sched_dict.saturday %}
+                            Сб
+                        {% endif %}
+                        {% if employee.sched_dict.sunday %}
+                            Нд
+                        {% endif %}
+                        )
+                    </td>
+                    <td class="tb-td edit-bck"><a class="hover-btn" href="edit/{{employee.id}}/">Редагувати</a></td>
+                    <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{employee.id}}/">Видалити</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h3>Додати нового робітника</h3>
+            <form action="add/" method="post">
+                {% csrf_token %}
+                <label for="emp_name">Ім'я робітника:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_name" id="id_emp_name" required placeholder="Ivan">
+                </div>
+                <label for="emp_surname">Прізвище робітника:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_surname" id="id_emp_surname" required placeholder="Ivanov">
+                </div>
+                <label for="emp_father">По батькові робітника:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_father" id="id_emp_father" required placeholder="Ivanovich">
+                </div>
+                <label for="emp_birth">Дата народження:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_birth" id="id_emp_birth" required placeholder="1980-12-12">
+                </div>
+                <label for="emp_phone">Номер телефону:</label><br>
+                <div class="input-div">
+                    <input type="tel" name="emp_phone" id="id_emp_phone" required placeholder="+380 12 345 67 89">
+                </div>
+                
+                <label>Розклад:</label><br>
+                <div class="input-div">
+                    {% for sched in schedules %}  
+                        <input class="radio-btn" type="radio" name="emp_sched" id="id_emp_sched" value={{sched.id}} checked>                  
+                        <label for="emp_sched">{{sched.time_start}} - {{sched.time_end}} (
+                                {% if sched.monday %}
+                                    Пн
+                                {% endif %}
+                                {% if sched.tuesday %}
+                                    Вт
+                                {% endif %}
+                                {% if sched.wednesday %}
+                                    Ср
+                                {% endif %}
+                                {% if sched.thursday %}
+                                    Чт
+                                {% endif %}
+                                {% if sched.friday %}
+                                    Пт
+                                {% endif %}
+                                {% if sched.saturday %}
+                                    Сб
+                                {% endif %}
+                                {% if sched.sunday %}
+                                    Нд
+                                {% endif %}
+                                )</label><br>                       
+                        {% endfor %}
+                </div>
+                <label for="emp_email">Електрона пошта:</label><br>
+                <div class="input-div">
+                    <input type="email" name="emp_email" id="id_emp_email" required placeholder="email@mail.com">
+                </div>
+                <label for="emp_password">Пароль:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_password" id="id_emp_password" required placeholder="123456">
+                </div>
+                <label for="emp_password_again">Повторіть пароль:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_password_again" id="id_emp_password_again" required placeholder="123456">
+                </div>
+                <input class="sbmt-btn" type="submit" value="Додати">
+            </form>
+        </div>    
+    </div>
+{% endblock content %}

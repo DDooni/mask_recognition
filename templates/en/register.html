@@ -1,0 +1,53 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>Registration</h1>
+        <form action="registration/" method="post">
+            {% csrf_token %}
+            <label for="id_mgr_name">Manager name:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_name" required id="id_mgr_name" placeholder="Ivan">
+            </div>
+            <label for="id_mgr_surname">Manager surname:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_surname" required id="id_mgr_surname" placeholder="Ivanov">
+            </div>
+            <label for="id_mgr_father">Manager father name:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_father" required id="id_mgr_father" placeholder="Ivanovich">
+            </div>
+            <label for="id_mgr_birth">Manager birthday:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_birth" required id="id_mgr_birth" placeholder="1990-12-23">
+            </div>
+            <label for="id_mgr_phone">Manager phone number:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_phone" required id="id_mgr_phone" placeholder="+380 123 45 67 89">
+            </div>
+            <label for="id_mgr_email">Manager email:</label>
+            <div class="input-div">
+                <input type="email" name="mgr_email" required id="id_mgr_email" placeholder="email@mail.com">
+            </div>
+            <label for="id_org_name">Company name:</label>
+            <div class="input-div">
+                <input type="text" name="org_name" required id="id_org_name" placeholder="Apple Inc.">
+            </div>
+            <label for="id_org_adress">Company adress:</label>
+            <div class="input-div">
+                <input type="text" name="org_adress" required id="id_org_adress" placeholder="Moscow Ave. 234">
+            </div>
+            <label for="id_password">Manager password:</label>
+            <div class="input-div">
+                <input type="text" name="password" required id="id_password" placeholder="123456">
+            </div>
+            <label for="id_password_again">Manager password (again):</label>
+            <div class="input-div">
+                <input type="text" name="password_again" required id="id_password_again" placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Sign Up">
+        </form>
+        <a class="del-cam" href="/">Sign In</a>
+    </div>
+</div>
+{% endblock content %}

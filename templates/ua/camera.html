@@ -1,0 +1,26 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h3>Редагувати камеру</h3>
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <label for="camera_name">Назва камери:</label><br>
+            <div class="input-div">
+                <input type="text" name="camera_name" id="id_camera_name" required value="{{camera.name}}" placeholder="Камера 1">
+            </div>
+            <label for="camera_for_area_name">Назва зони:</label><br>
+            <div class="input-div">
+                <select name="camera_for_area_name" id="id_camera_for_area_name">
+                    {% for area in areas %}
+                        <option value="{{area.name}}"{% if camera.area_id == area.id %} selected {% endif %}>{{area.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <input class="sbmt-btn" type="submit" value="Оновити">
+            
+        </form>
+        <button class="del-cam" onclick="window.location='delete/'">Видалити</button>
+    </div>
+</div>
+{% endblock content %}

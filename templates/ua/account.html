@@ -1,0 +1,50 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div  id="page-inner-cnt">
+        <h1>{{manager.name}} {{manager.surname}} {{manager.father}}</h1>
+        <h3>{{organization.name}}</h3>
+        <table>
+            <tr>
+                <td class="tb-title">
+                    Адреса:
+                </td>
+                <td class="tb-cnt">
+                    {{organization.adress}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Дата народження:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.birth}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Електрона пошта:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.email}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Номер телефону:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.phone}}
+                </td>
+            </tr>
+        </table>
+        <ul>
+            <li><a href="employees/">Робітники</a></li>
+            <li><a href="schedules/">Розклади</a></li>
+            <li><a href="areas/">Зони та Камери</a></li>
+            <li><a href="warnings/">Порушення</a></li>
+        </ul>
+        <a id="btn-run" href="run_mask/">Запустити знаходження масок</a>
+    </div>
+</div>
+{% endblock content %}

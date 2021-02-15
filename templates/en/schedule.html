@@ -1,0 +1,30 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h3>Edit a schedule</h3>
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <label for="time_start">Start time:</label><br>
+            <div class="input-div">
+                <input type="time" name="time_start" id="id_time_start" required value="{{schedule.time_start}}">
+            </div>
+            <label for="time_end">Time end:</label><br>
+            <div class="input-div">
+                <input type="time" name="time_end" id="id_time_end" required value="23:00">
+            </div>
+            <label>Days of week:</label><br>
+            <div class="input-div">
+                <input class="radio-btn" type="checkbox" name="sch_mon" id="id_sch_mon" {% if schedule.monday %} checked {% endif %}>Monday<br>
+                <input class="radio-btn" type="checkbox" name="sch_tue" id="id_sch_tue" {% if schedule.tuesday %} checked {% endif %}>Tuesday<br>
+                <input class="radio-btn" type="checkbox" name="sch_wed" id="id_sch_wed" {% if schedule.wednesday %} checked {% endif %}>Wednesday<br>
+                <input class="radio-btn" type="checkbox" name="sch_thu" id="id_sch_thu" {% if schedule.thursday %} checked {% endif %}>Thursday<br>
+                <input class="radio-btn" type="checkbox" name="sch_fri" id="id_sch_fri" {% if schedule.friday %} checked {% endif %}>Friday<br>
+                <input class="radio-btn" type="checkbox" name="sch_sat" id="id_sch_sat" {% if schedule.saturday %} checked {% endif %}>Saturday<br>
+                <input class="radio-btn" type="checkbox" name="sch_sun" id="id_sch_sun" {% if schedule.sunday %} checked {% endif %}>Sunday<br>
+            </div>
+            <input class="sbmt-btn" type="submit" value="Update">
+        </form>
+    </div>
+</div>
+{% endblock content %}

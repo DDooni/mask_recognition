@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+{% load googlecharts %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{{title}}</title>
+</head>
+<body>
+    {% block header %}
+    <header>
+        <a class="nav" href="/">Home</a>
+        <a class="nav" href="contacts_redirect/">Contacts</a>
+        <a class="nav" href="backups_redirect/">Backups</a>
+        <a class="nav" href="signout/">Sign Out</a>
+        <div>
+            <a class="nav" href="ukr/">UA</a> | 
+            <a class="nav cur-lang" href="eng/">EN</a>
+        </div>
+    </header>
+    {% endblock header %}
+    <div class="wrapper">
+        {% block content %}
+            {% googlecharts %}
+            {% endgooglecharts %}
+        {% endblock content %}
+    </div>
+    <div class="errors">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <span{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                {{ message }}
+        </span>
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <footer>
+        <div id="reserved">
+            All rights reserved!
+        </div>
+    </footer>
+</body>
+</html>

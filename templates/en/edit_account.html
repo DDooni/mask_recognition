@@ -1,0 +1,62 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>Edit a manager</h1>
+        <form action="update_account/" method="post">
+            {% csrf_token %}
+
+            <label for="id_mgr_name">Manager name:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_name" id="id_mgr_name" required value={{manager.name}} placeholder="Ivan">
+            </div>
+
+            <label for="id_mgr_surname">Manager surname:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_surname" id="id_mgr_surname" required value={{manager.surname}} placeholder="Ivanov">
+            </div>
+            
+            <label for="id_mgr_father">Manager father name:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_father" id="id_mgr_father" required value={{manager.father}} placeholder="Ivanovich">
+            </div>
+
+            <label for="id_mgr_birth">Manager birthday:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_birth" id="id_mgr_birth" required value='{{manager.birth}}' placeholder="1990-01-25">
+            </div>
+
+            <label for="id_mgr_phone">Manager phone number:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_phone" id="id_mgr_phone" required value='{{manager.phone}}' placeholder="+380 123 45 67 89">
+            </div>
+
+            <label for="id_mgr_email">Manager email:</label>
+            <div class="input-div">
+                <input type="email" name="mgr_email" id="id_mgr_email" required value={{manager.email}} placeholder="email@mail.com">
+            </div>
+
+            <label for="id_org_name">Company name:</label>
+            <div class="input-div">
+                <input type="text" name="org_name" id="id_org_name" required value='{{organization.name}}' placeholder="Apple Inc.">
+            </div>
+
+            <label for="id_org_adress">Company adress:</label>
+            <div class="input-div">
+                <input type="text" name="org_adress" id="id_org_adress" required value='{{organization.adress}}' placeholder="Moscow Ave. 234">
+            </div>
+
+            <label for="id_password">Manager password:</label>
+            <div class="input-div">
+                <input type="password" name="password" id="id_password" required placeholder="123456">
+            </div>
+
+            <label for="id_password_again">Manager password (again):</label>
+            <div class="input-div">
+                <input type="password" name="password_again" id="id_password_again" required placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Update">
+        </form>
+    </div>
+</div>
+{% endblock content %}

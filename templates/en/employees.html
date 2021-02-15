@@ -1,0 +1,138 @@
+{% extends "en/base.html" %}
+{% block content %}
+    <div id="content">
+        <div id="page-inner-cnt">
+            <table class="tb-with-list">
+                <caption id="tb-cap">Employees list</caption>
+                <tr>
+                    <th class="tb-td">Name</th>
+                    <th class="tb-td">Surname</th>
+                    <th class="tb-td">Father</th>
+                    <th class="tb-td">Birthday</th>
+                    <th class="tb-td">Phone number</th>
+                    <th class="tb-td">Email</th>
+                    <th class="tb-td">Schedule</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for employee in employees %}
+                <tr>
+                    <td class="tb-td">
+                        {{employee.name}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.surname}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.father}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.birth}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.phone}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.email}}
+                    </td>
+                    <td class="tb-td">
+                        {{employee.sched_dict.time_start}} - {{employee.sched_dict.time_end}} (
+                        {% if employee.sched_dict.monday %}
+                            Mon
+                        {% endif %}
+                        {% if employee.sched_dict.tuesday %}
+                            Tue
+                        {% endif %}
+                        {% if employee.sched_dict.wednesday %}
+                            Wed
+                        {% endif %}
+                        {% if employee.sched_dict.thursday %}
+                            Thu
+                        {% endif %}
+                        {% if employee.sched_dict.friday %}
+                            Fri
+                        {% endif %}
+                        {% if employee.sched_dict.saturday %}
+                            Sat
+                        {% endif %}
+                        {% if employee.sched_dict.sunday %}
+                            Sun
+                        {% endif %}
+                        )
+                    </td>
+                    <td class="tb-td edit-bck"><a class="hover-btn" href="edit/{{employee.id}}/">Edit</a></td>
+                    <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{employee.id}}/">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h3>Add new employee</h3>
+            <form action="add/" method="post">
+                {% csrf_token %}
+                <label for="emp_name">Employee name:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_name" id="id_emp_name" required placeholder="Ivan">
+                </div>
+                <label for="emp_surname">Employee surname:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_surname" id="id_emp_surname" required placeholder="Ivanov">
+                </div>
+                <label for="emp_father">Employee father:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_father" id="id_emp_father" required placeholder="Ivanovich">
+                </div>
+                <label for="emp_birth">Birthday:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_birth" id="id_emp_birth" required placeholder="1980-12-12">
+                </div>
+                <label for="emp_phone">Phone number:</label><br>
+                <div class="input-div">
+                    <input type="tel" name="emp_phone" id="id_emp_phone" required placeholder="+380 12 345 67 89">
+                </div>
+                
+                <label>Schedule:</label><br>
+                <div class="input-div">
+                    {% for sched in schedules %}  
+                        <input class="radio-btn" type="radio" name="emp_sched" id="id_emp_sched" value={{sched.id}} checked>                  
+                        <label for="emp_sched">{{sched.time_start}} - {{sched.time_end}} (
+                                {% if sched.monday %}
+                                    Mon
+                                {% endif %}
+                                {% if sched.tuesday %}
+                                    Tue
+                                {% endif %}
+                                {% if sched.wednesday %}
+                                    Wed
+                                {% endif %}
+                                {% if sched.thursday %}
+                                    Thu
+                                {% endif %}
+                                {% if sched.friday %}
+                                    Fri
+                                {% endif %}
+                                {% if sched.saturday %}
+                                    Sat
+                                {% endif %}
+                                {% if sched.sunday %}
+                                    Sun
+                                {% endif %}
+                                )</label><br>                       
+                        {% endfor %}
+                </div>
+                <label for="emp_email">Email:</label><br>
+                <div class="input-div">
+                    <input type="email" name="emp_email" id="id_emp_email" required placeholder="email@mail.com">
+                </div>
+                <label for="emp_password">Password:</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_password" id="id_emp_password" required placeholder="123456">
+                </div>
+                <label for="emp_password_again">Password (again):</label><br>
+                <div class="input-div">
+                    <input type="text" name="emp_password_again" id="id_emp_password_again" required placeholder="123456">
+                </div>
+                <input class="sbmt-btn" type="submit" value="Add">
+            </form>
+        </div>
+        
+    </div>
+{% endblock content %}

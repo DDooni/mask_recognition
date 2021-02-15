@@ -1,0 +1,77 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h3>Редагувати робітника</h3>
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <label for="emp_name">Ім'я робітника:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_name" id="id_emp_name" required value="{{emp.name}}"  placeholder="Ivan">
+            </div>
+            <label for="emp_surname">Прізвище робітника:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_surname" id="id_emp_surname" required value="{{emp.surname}}" placeholder="Ivanov">
+            </div>
+            <label for="emp_father">По батькові робітника:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_father" id="id_emp_father" required value="{{emp.father}}" placeholder="Ivanovich">
+            </div>
+            <label for="emp_birth">Дата народження:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_birth" id="id_emp_birth" required value="{{emp.birth}}" placeholder="1980-12-12">
+            </div>
+            <label for="emp_phone">Номер телефону:</label><br>
+            <div class="input-div">
+                <input type="tel" name="emp_phone" id="id_emp_phone" required value="{{emp.phone}}" placeholder="+380 12 345 67 89">
+            </div>
+
+            <label>Розклад:</label><br>
+            <div class="input-div">
+                {% for sched in schedules %}  
+                    <input class="radio-btn" type="radio" name="emp_sched" id="id_emp_sched" value={{sched.id}}
+                        {% if sched.id == emp.sched_id %}
+                            checked
+                        {% endif %}>                  
+                    <label for="emp_sched">{{sched.time_start}} - {{sched.time_end}} (
+                            {% if sched.monday %}
+                                Пн
+                            {% endif %}
+                            {% if sched.tuesday %}
+                                Вт
+                            {% endif %}
+                            {% if sched.wednesday %}
+                                Ср
+                            {% endif %}
+                            {% if sched.thursday %}
+                                Чт
+                            {% endif %}
+                            {% if sched.friday %}
+                                Пт
+                            {% endif %}
+                            {% if sched.saturday %}
+                                Сб
+                            {% endif %}
+                            {% if sched.sunday %}
+                                Нд
+                            {% endif %}
+                            )</label><br>                       
+                    {% endfor %}
+            </div>
+            <label for="emp_email">Електрона пошта:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_email" id="id_emp_email" required value="{{emp.email}}" placeholder="email@mail.com">
+            </div>
+            <label for="emp_password">Пароль:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_password" id="id_emp_password" required placeholder="123456">
+            </div>
+            <label for="emp_password_again">Повторіть пароль:</label><br>
+            <div class="input-div">
+                <input type="text" name="emp_password_again" id="id_emp_password_again" required placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Оновити">
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>
+            Сторінка адміністратора
+        </h1>
+        <div>
+            <table class="tb-with-list">
+                <caption id="tb-cap">Керівники та Організації</caption>
+                <tr>
+                    <th class="tb-td">Ім'я керівника</th>
+                    <th class="tb-td">Прізвище керівника</th>
+                    <th class="tb-td">Електрона пошта</th>
+                    <th class="tb-td">Номер телефону</th>
+                    <th class="tb-td">Організація</th>
+                    <th class="tb-td">Адреса організації</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <td class="tb-td">{{item.name}}</td>
+                    <td class="tb-td">{{item.surname}}</td>
+                    <td class="tb-td">{{item.email}}</td>
+                    <td class="tb-td">{{item.phone}}</td>
+                    <td class="tb-td">{{item.org_name}}</td>
+                    <td class="tb-td">{{item.org_adress}}</td>
+                    <td class="tb-td edit-bck"><a class="hover-btn" href="edit/{{item.id}}/">Редагувати</a></td>
+                    <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{item.id}}/">Видалити</a></td>
+                    <td class="tb-td det-bck"><a class="hover-btn" href="{{item.id}}/">Детальніше</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

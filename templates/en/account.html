@@ -1,0 +1,50 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>{{manager.name}} {{manager.surname}} {{manager.father}}</h1>
+        <h3>{{organization.name}}</h3>
+        <table>
+            <tr>
+                <td class="tb-title">
+                    Adress:
+                </td>
+                <td class="tb-cnt">
+                    {{organization.adress}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Birth date:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.birth}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Email:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.email}}
+                </td>
+            </tr>
+            <tr>
+                <td class="tb-title">
+                    Tel.:
+                </td>
+                <td class="tb-cnt">
+                    {{manager.phone}}
+                </td>
+            </tr>
+        </table>
+        <ul>
+            <li><a href="employees/">Employees</a></li>
+            <li><a href="schedules/">Schedules</a></li>
+            <li><a href="areas/">Areas and Cameras</a></li>
+            <li><a href="warnings/">Warnings</a></li>
+        </ul>
+        <a id="btn-run" href="run_mask/">Run Mask Detecting</a>
+    </div>
+</div>
+{% endblock content %}

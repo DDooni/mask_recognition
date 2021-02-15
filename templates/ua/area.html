@@ -1,0 +1,16 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h3>Редагувати зону</h3>
+        <form action="update/" method="post">
+            {% csrf_token %}
+            <label for="area_name">Назва зони:</label><br>
+            <div class="input-div">
+                <input type="text" name="area_name" id="id_area_name" required value="{{area.name}}" placeholder="Зона 1">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Оновити">
+        </form>
+    </div>
+</div>   
+{% endblock content %}

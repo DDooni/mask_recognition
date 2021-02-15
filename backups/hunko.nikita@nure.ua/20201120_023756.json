@@ -1,0 +1,48 @@
+{
+    "areas": [],
+    "cameras": [],
+    "employees": [
+        {
+            "birth": "2001-04-19",
+            "email": "layla.bob@nure.ua",
+            "father": "Vasilyovich",
+            "id": 7,
+            "name": "Bob",
+            "org_id": 11,
+            "phone": "+380 95 456 12 45",
+            "sched_id": 8,
+            "surname": "Lyala"
+        }
+    ],
+    "manager": {
+        "birth": "2001-07-24",
+        "email": "hunko.nikita@nure.ua",
+        "father": "Andreevich",
+        "id": 20,
+        "name": "Nikita",
+        "phone": "+380 96 124 21 44",
+        "surname": "Hunko"
+    },
+    "organization": {
+        "adress": "Electrovoznaya st. 21",
+        "id": 11,
+        "mgr_id": 20,
+        "name": "Image Phone"
+    },
+    "schedules": [
+        {
+            "friday": true,
+            "id": 8,
+            "monday": true,
+            "org_id": 11,
+            "saturday": false,
+            "sunday": false,
+            "thursday": true,
+            "time_end": "23:00",
+            "time_start": "09:00",
+            "tuesday": true,
+            "wednesday": true
+        }
+    ],
+    "warnings": []
+}

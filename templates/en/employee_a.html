@@ -1,0 +1,37 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>Organization: {{organization.name}}</h1>
+        <h3>Employee info:</h3>
+        <div><b>Name: </b>{{employee.name}}</div>
+        <div><b>Surname: </b>{{employee.surname}}</div>
+        <div><b>Father name: </b>{{employee.father}}</div>
+        <div><b>Birthday: </b>{{employee.birth}}</div>
+        <div><b>Phone number: </b>{{employee.phone}}</div>
+        <div><b>Schedule: </b>{{schedule.time_start}} - {{schedule.time_end}} (
+            {% if schedule.monday %}
+                Mon
+            {% endif %}
+            {% if schedule.tuesday %}
+                Tue
+            {% endif %}
+            {% if schedule.wednesday %}
+                Wed
+            {% endif %}
+            {% if schedule.thursday %}
+                Thu
+            {% endif %}
+            {% if schedule.friday %}
+                Fri
+            {% endif %}
+            {% if schedule.saturday %}
+                Sat
+            {% endif %}
+            {% if schedule.sunday %}
+                Sun
+            {% endif %}
+            )</div>
+    </div>
+</div> 
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends "ua/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>Реєстрація</h1>
+        <form action="registration/" method="post">
+            {% csrf_token %}
+            <label for="id_mgr_name">Ім'я керівника:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_name" required id="id_mgr_name" placeholder="Іван">
+            </div>
+            <label for="id_mgr_surname">Прізвище керівника:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_surname" required id="id_mgr_surname" placeholder="Іванов">
+            </div>
+            <label for="id_mgr_father">По батькові керівника:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_father" required id="id_mgr_father" placeholder="Іванович">
+            </div>
+            <label for="id_mgr_birth">Дата народження:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_birth" required id="id_mgr_birth" placeholder="1990-12-23">
+            </div>
+            <label for="id_mgr_phone">Номер телефону:</label>
+            <div class="input-div">
+                <input type="text" name="mgr_phone" required id="id_mgr_phone" placeholder="+380 123 45 67 89">
+            </div>
+            <label for="id_mgr_email">Електрона пошта:</label>
+            <div class="input-div">
+                <input type="email" name="mgr_email" required id="id_mgr_email" placeholder="email@mail.com">
+            </div>
+            <label for="id_org_name">Назва компанії:</label>
+            <div class="input-div">
+                <input type="text" name="org_name" required id="id_org_name" placeholder="Apple Inc.">
+            </div>
+            <label for="id_org_adress">Адреса компанії:</label>
+            <div class="input-div">
+                <input type="text" name="org_adress" required id="id_org_adress" placeholder="просп. Московський 234">
+            </div>
+            <label for="id_password">Пароль:</label>
+            <div class="input-div">
+                <input type="text" name="password" required id="id_password" placeholder="123456">
+            </div>
+            <label for="id_password_again">Повторіть пароль:</label>
+            <div class="input-div">
+                <input type="text" name="password_again" required id="id_password_again" placeholder="123456">
+            </div>
+            <input class="sbmt-btn" type="submit" value="Зареєструватися">
+        </form>
+        <a class="del-cam" href="/">Увійти</a>
+    </div>
+</div>
+{% endblock content %}

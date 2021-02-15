@@ -1,0 +1,39 @@
+{% extends "en/base.html" %}
+{% block content %}
+<div id="content">
+    <div id="page-inner-cnt">
+        <h1>
+            Admin page
+        </h1>
+        <div>
+            <table class="tb-with-list">
+                <caption id="tb-cap">Managers and Organizations</caption>
+                <tr>
+                    <th class="tb-td">Manager Name</th>
+                    <th class="tb-td">Manager Surname</th>
+                    <th class="tb-td">Manager email</th>
+                    <th class="tb-td">Manager phone</th>
+                    <th class="tb-td">Organization</th>
+                    <th class="tb-td">Organization adress</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <td class="tb-td">{{item.name}}</td>
+                    <td class="tb-td">{{item.surname}}</td>
+                    <td class="tb-td">{{item.email}}</td>
+                    <td class="tb-td">{{item.phone}}</td>
+                    <td class="tb-td">{{item.org_name}}</td>
+                    <td class="tb-td">{{item.org_adress}}</td>
+                    <td class="tb-td edit-bck"><a class="hover-btn" href="edit/{{item.id}}/">Edit</a></td>
+                    <td class="tb-td del-bck"><a class="hover-btn" href="delete/{{item.id}}/">Delete</a></td>
+                    <td class="tb-td det-bck"><a class="hover-btn" href="{{item.id}}/">Details</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
